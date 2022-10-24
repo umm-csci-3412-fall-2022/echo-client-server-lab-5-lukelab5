@@ -12,14 +12,14 @@ public class EchoServer {
 
 			while(true){
 				Socket clientSocket = s.accept();
-				InputStream input = clientSocket.getInputStream();
-				OutputStream output = clientSocket.getOutputStream();
+				InputStream in = clientSocket.getInputStream();
+				OutputStream out = clientSocket.getOutputStream();
 				byte buffer = new byte[BUFFER_SIZE];
 				int readBytes;
 
-				while((readBytes = input.read(buffer)) != -1){
-					output.write(buffer,0,readBytes);
-					output.flush();
+				while((readBytes = in.read(buffer)) != -1){
+					out.write(buffer,0,readBytes);
+					out.flush();
 				}
 				clientSocket.shutdownOutput();
 			}
